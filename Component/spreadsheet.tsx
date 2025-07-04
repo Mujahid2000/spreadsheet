@@ -229,10 +229,36 @@ export default function Spreadsheet() {
               <Share className="w-4 h-4 mr-1" />
               Share
             </Button>
-            <Button className="bg-green-600 hover:bg-green-700 text-white text-sm">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                    <DialogTrigger asChild>
+                      <Button className="bg-green-600 hover:bg-green-700 text-white text-sm">
               <Plus className="w-4 h-4 mr-1" />
               New Action
             </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                      <DialogHeader>
+                        <DialogTitle>Add New Column</DialogTitle>
+                      </DialogHeader>
+                      <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
+                        <div className="grid gap-3">
+                          <Label htmlFor="column">Column Name</Label>
+                          <Input
+                            id="column"
+                            {...register("column", { required: "Column name is required" })}
+                            placeholder="Enter column name"
+                          />
+                          {errors.column && (
+                            <p className="text-sm text-red-500">{errors.column.message}</p>
+                          )}
+                        </div>
+                        <Button type="submit">Add Column</Button>
+                      </form>
+                    </DialogContent>
+                  </Dialog>
+            </form>
+            
           </div>
         </div>
       </div>
