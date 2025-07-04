@@ -268,7 +268,7 @@ export default function Spreadsheet() {
                   <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                     <DialogTrigger asChild>
                       <Button variant="ghost" className="text-sm">
-                        ADD
+                        +
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px]">
